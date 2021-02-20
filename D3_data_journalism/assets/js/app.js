@@ -13,7 +13,7 @@ var margin = {
   var height = svgHeight - margin.top - margin.bottom;
 
  // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var svg = d3.select(".chart")
+var svg = d3.select("#scatter")
 .append("svg")
 .attr("width", svgWidth)
 .attr("height", svgHeight);
@@ -22,7 +22,7 @@ var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import Data
-d3.csv("data.csv").then(function(StateHealth) {
+d3.csv("assets/data/data.csv").then(function(StateHealth) {
    
     // Parse Data/Cast as numbers
     StateHealth.forEach(function(data) {
@@ -83,7 +83,7 @@ d3.csv("data.csv").then(function(StateHealth) {
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
         .attr("class", "axisText")
-        .text("Lacks Healthcare");
+        .text("Lacks Healthcare (%)");
 
     chartGroup.append("text")
         .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
